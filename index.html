@@ -2,109 +2,219 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#17130c">
 <link rel="manifest" href="./manifest.json">
-<title>Mister Emis - Fermentação V5</title>
+
+<title>Mister Emis - Fermentação V5.1</title>
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;background:#0d0d0d;color:#f5f5f5;
- font-family:Arial,sans-serif
+*{
+  box-sizing:border-box;
 }
-header{
- background:#17130c;border-bottom:3px solid #e5a91c;
- padding:20px
-}
-.brand{
- max-width:900px;margin:auto;display:flex;
- align-items:center;gap:15px
-}
-.logo{
- width:105px;height:105px;object-fit:contain;
- border-radius:18px
-}
-.title{font-size:29px;font-weight:bold;color:#f0b323}
-.subtitle{font-size:17px;margin-top:5px}
 
-main{max-width:900px;margin:auto;padding:16px}
+body{
+  margin:0;
+  background:#0d0d0d;
+  color:#f5f5f5;
+  font-family:Arial,sans-serif;
+}
+
+header{
+  background:#17130c;
+  border-bottom:3px solid #e5a91c;
+  padding:20px;
+}
+
+.brand{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  width:105px;
+  height:105px;
+  object-fit:contain;
+  border-radius:18px;
+}
+
+.title{
+  font-size:29px;
+  font-weight:bold;
+  color:#f0b323;
+}
+
+.subtitle{
+  font-size:17px;
+  margin-top:5px;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:16px;
+}
 
 .card{
- background:#1b1b1b;border-radius:20px;
- padding:20px;margin-bottom:18px
+  background:#1b1b1b;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
 }
-.card.assistant{border:1px solid #8c6819}
 
-h2{margin:0 0 16px;font-size:23px}
+.assistant{
+  border:1px solid #8c6819;
+}
+
+h2{
+  margin:0 0 16px;
+  font-size:23px;
+}
+
+h3{
+  color:#f0b323;
+}
 
 label{
- display:block;color:#ddd;
- margin:3px 0 6px
+  display:block;
+  color:#ddd;
+  margin:4px 0 6px;
 }
 
-input,select,textarea{
- width:100%;background:#101010;color:#fff;
- border:1px solid #444;border-radius:11px;
- padding:14px;font-size:16px;margin-bottom:12px
+input,
+select,
+textarea{
+  width:100%;
+  background:#101010;
+  color:#fff;
+  border:1px solid #444;
+  border-radius:11px;
+  padding:14px;
+  font-size:16px;
+  margin-bottom:12px;
 }
 
-textarea{min-height:80px}
+textarea{
+  min-height:75px;
+}
 
 .grid{
- display:grid;grid-template-columns:1fr 1fr;
- gap:10px
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
 .actions{
- display:flex;gap:8px;flex-wrap:wrap
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
 button{
- border:0;border-radius:10px;padding:13px 16px;
- font-size:15px;font-weight:bold;
- background:#f0b323;color:#111
+  border:0;
+  border-radius:10px;
+  padding:13px 16px;
+  font-size:15px;
+  font-weight:bold;
+  background:#f0b323;
+  color:#111;
+  cursor:pointer;
 }
 
-.gray{background:#444;color:#fff}
-.red{background:#812d30;color:#fff}
+.gray{
+  background:#444;
+  color:#fff;
+}
+
+.red{
+  background:#812d30;
+  color:#fff;
+}
+
+.green{
+  background:#3b7d44;
+  color:#fff;
+}
 
 .stage{
- color:#f0b323;font-size:22px;
- font-weight:bold;margin-bottom:10px
+  color:#f0b323;
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.badge{
+  display:inline-block;
+  background:#302713;
+  border:1px solid #8c6819;
+  border-radius:20px;
+  padding:7px 11px;
+  margin:4px 3px;
 }
 
 .small{
- color:#aaa;font-size:13px;
- line-height:1.5
+  color:#aaa;
+  font-size:13px;
+  line-height:1.5;
 }
 
-.metric{line-height:1.7}
-
-.badge{
- display:inline-block;background:#302713;
- border:1px solid #8c6819;border-radius:20px;
- padding:7px 11px;margin:4px 3px 4px 0
+.etapa{
+  background:#111;
+  border:1px solid #444;
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:12px;
 }
 
-.tablebox{overflow-x:auto}
+.etapa-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.tablebox{
+  overflow-x:auto;
+}
 
 table{
- width:100%;border-collapse:collapse;
- min-width:650px
+  width:100%;
+  border-collapse:collapse;
+  min-width:650px;
 }
 
-th,td{
- padding:10px;border-bottom:1px solid #444;
- text-align:left
+th,
+td{
+  padding:10px;
+  border-bottom:1px solid #444;
+  text-align:left;
 }
 
 @media(max-width:600px){
- .grid{grid-template-columns:1fr}
- .logo{width:95px;height:95px}
- .title{font-size:26px}
- main{padding:12px}
- .card{padding:18px}
+
+  .grid,
+  .etapa-grid{
+    grid-template-columns:1fr;
+  }
+
+  .logo{
+    width:95px;
+    height:95px;
+  }
+
+  .title{
+    font-size:26px;
+  }
+
+  main{
+    padding:12px;
+  }
+
+  .card{
+    padding:18px;
+  }
 }
 </style>
 </head>
@@ -113,149 +223,255 @@ th,td{
 
 <header>
 <div class="brand">
- <img src="./logo.png" class="logo" alt="Mister Emis">
- <div>
-  <div class="title">MISTER EMIS</div>
-  <div class="subtitle">Controle de Fermentação • V5</div>
- </div>
+
+<img
+  src="./logo.png"
+  class="logo"
+  alt="Mister Emis"
+>
+
+<div>
+  <div class="title">
+    MISTER EMIS
+  </div>
+
+  <div class="subtitle">
+    Controle de Fermentação • V5.1
+  </div>
+</div>
+
 </div>
 </header>
 
 <main>
 
 <section class="card">
+
 <h2>🍺 Receitas / lotes</h2>
 
-<select id="lista" onchange="selecionar()">
-<option value="">Selecione...</option>
+<select id="lista">
+<option value="">
+Selecione...
+</option>
 </select>
 
 <div class="actions">
-<button onclick="novo()">+ Nova</button>
-<button class="gray" onclick="editar()">Editar</button>
-<button class="red" onclick="excluir()">Excluir</button>
+
+<button id="btnNova">
++ Nova
+</button>
+
+<button
+  id="btnEditar"
+  class="gray">
+Editar
+</button>
+
+<button
+  id="btnExcluir"
+  class="red">
+Excluir
+</button>
+
 </div>
+
 </section>
 
+
 <section class="card">
+
 <h2>📝 Cadastro do lote</h2>
 
 <div class="grid">
 
 <div>
 <label>Nome do lote</label>
-<input id="nome" placeholder="Ex.: Pilsen 001">
+<input
+  id="nome"
+  type="text"
+  placeholder="Ex.: Pilsen 001">
 </div>
 
 <div>
 <label>Estilo</label>
-<input id="estilo" placeholder="Ex.: Pilsen">
+<input
+  id="estilo"
+  type="text"
+  placeholder="Ex.: Pilsen">
 </div>
 
 <div>
 <label>Fermentador</label>
-<input id="fermentador" placeholder="Ex.: F01">
+<input
+  id="fermentador"
+  type="text"
+  placeholder="Ex.: 300 L">
 </div>
 
 <div>
 <label>Volume (L)</label>
-<input id="volume" type="number" step="0.1">
+<input
+  id="volume"
+  type="number"
+  step="0.1">
 </div>
 
 <div>
 <label>Brix inicial</label>
-<input id="brixInicial" type="number" step="0.1">
+<input
+  id="brixInicial"
+  type="number"
+  step="0.1">
 </div>
 
 <div>
 <label>Brix alvo</label>
-<input id="brixAlvo" type="number" step="0.1">
-</div>
-
-<div>
-<label>Temperatura inicial °C</label>
-<input id="tempInicial" type="number" step="0.1">
+<input
+  id="brixAlvo"
+  type="number"
+  step="0.1">
 </div>
 
 <div>
 <label>Pressão alvo (bar)</label>
-<input id="pressaoAlvo" type="number" step="0.1">
+<input
+  id="pressaoAlvo"
+  type="number"
+  step="0.1">
 </div>
 
 <div>
-<label>Temperatura de diacetil °C</label>
-<input id="tempDiacetil" type="number" step="0.1">
-</div>
-
-<div>
-<label>Temperatura de cold crash °C</label>
-<input id="tempCold" type="number" step="0.1">
+<label>Data de início</label>
+<input
+  id="inicio"
+  type="date">
 </div>
 
 </div>
 
-<label>Programa de fermentação</label>
-<textarea id="programa"
-placeholder="Ex.: Dias 1-2: 10°C; dias 3-4: 11°C; dias 5-6: 12°C"></textarea>
+<h3>🌡️ Programa de fermentação</h3>
 
-<button onclick="salvarLote()">💾 Salvar lote</button>
+<p class="small">
+Cada lote pode ter temperaturas e etapas
+diferentes. Nada aqui é padrão para todas
+as cervejas.
+</p>
+
+<div id="etapas"></div>
+
+<button
+  type="button"
+  id="btnAdicionarEtapa"
+  class="gray">
++ Adicionar etapa
+</button>
+
+<br><br>
+
+<button
+  type="button"
+  id="btnSalvar">
+💾 Salvar lote
+</button>
+
 </section>
+
 
 <section class="card assistant">
+
 <h2>🧭 Assistente de fermentação</h2>
+
 <div id="assistente">
-<div class="stage">Nenhum lote selecionado</div>
-<p>Cadastre ou selecione um lote.</p>
+
+<div class="stage">
+Nenhum lote selecionado
 </div>
+
+<p>
+Cadastre ou selecione um lote.
+</p>
+
+</div>
+
 </section>
 
+
 <section class="card">
-<h2 id="tituloMedicao">🌡️ Nova medição</h2>
+
+<h2 id="tituloMedicao">
+🌡️ Nova medição
+</h2>
 
 <div class="grid">
 
 <div>
 <label>Data</label>
-<input id="data" type="date">
+<input
+  id="dataMedicao"
+  type="date">
 </div>
 
 <div>
 <label>Brix atual</label>
-<input id="brix" type="number" step="0.1">
+<input
+  id="brixAtual"
+  type="number"
+  step="0.1">
 </div>
 
 <div>
-<label>Temperatura °C</label>
-<input id="temperatura" type="number" step="0.1">
+<label>Temperatura atual °C</label>
+<input
+  id="temperaturaAtual"
+  type="number"
+  step="0.1">
 </div>
 
 <div>
-<label>Pressão (bar)</label>
-<input id="pressao" type="number" step="0.1">
+<label>Pressão atual (bar)</label>
+<input
+  id="pressaoAtual"
+  type="number"
+  step="0.1">
 </div>
 
 </div>
 
 <label>Observações</label>
-<textarea id="observacao"></textarea>
 
-<button onclick="registrarMedicao()">
+<textarea
+  id="observacao"
+  placeholder="Ex.: fermentação ativa, aroma normal...">
+</textarea>
+
+<button
+  type="button"
+  id="btnMedicao">
 ➕ Registrar medição
 </button>
+
 </section>
 
+
 <section class="card">
-<h2>📊 Resumo da fermentação</h2>
+
+<h2>📊 Resumo</h2>
+
 <div id="resumo">
 Selecione um lote.
 </div>
+
 </section>
 
+
 <section class="card">
+
 <h2>📋 Histórico</h2>
 
 <div class="tablebox">
+
 <table>
+
 <thead>
 <tr>
 <th>Data</th>
@@ -266,40 +482,46 @@ Selecione um lote.
 </tr>
 </thead>
 
-<tbody id="historico"></tbody>
+<tbody id="historico">
+</tbody>
+
 </table>
+
 </div>
+
 </section>
 
+
 <section class="card">
+
 <h2>💾 Backup</h2>
 
 <div class="actions">
 
-<button class="gray" onclick="exportarCSV()">
-Exportar CSV
-</button>
-
-<button class="gray" onclick="backup()">
+<button
+  type="button"
+  id="btnBackup"
+  class="gray">
 Backup JSON
 </button>
 
-<button onclick="document.getElementById('arquivo').click()">
-Restaurar
+<button
+  type="button"
+  id="btnRestaurar"
+  class="gray">
+Restaurar backup
 </button>
 
 </div>
 
 <input
- id="arquivo"
- type="file"
- accept=".json"
- style="display:none"
- onchange="restaurar(this)"
->
+  id="arquivoBackup"
+  type="file"
+  accept=".json"
+  style="display:none">
 
 <p class="small">
-Os lotes ficam armazenados neste aparelho.
+Os dados ficam armazenados neste aparelho.
 Faça backup regularmente.
 </p>
 
@@ -307,387 +529,1295 @@ Faça backup regularmente.
 
 </main>
 
+
 <script>
 
-const CHAVE="MISTER_EMIS_V5";
+(function(){
 
-let banco=
-JSON.parse(localStorage.getItem(CHAVE)) ||
-{lotes:[],ativo:null};
+"use strict";
 
-const $=id=>document.getElementById(id);
+var CHAVE = "MISTER_EMIS_V51";
+
+var banco = {
+  lotes: [],
+  ativo: ""
+};
+
+function el(id){
+  return document.getElementById(id);
+}
+
+function hoje(){
+  var d = new Date();
+  var mes = String(d.getMonth()+1);
+
+  if(mes.length < 2){
+    mes = "0" + mes;
+  }
+
+  var dia = String(d.getDate());
+
+  if(dia.length < 2){
+    dia = "0" + dia;
+  }
+
+  return d.getFullYear() +
+    "-" + mes +
+    "-" + dia;
+}
+
+function carregar(){
+
+  try{
+
+    var salvo =
+      localStorage.getItem(CHAVE);
+
+    if(salvo){
+
+      var dados =
+        JSON.parse(salvo);
+
+      if(
+        dados &&
+        dados.lotes &&
+        Array.isArray(dados.lotes)
+      ){
+        banco = dados;
+      }
+    }
+
+  }catch(erro){
+
+    console.log(
+      "Erro ao carregar dados:",
+      erro
+    );
+  }
+}
 
 function gravar(){
- localStorage.setItem(CHAVE,JSON.stringify(banco));
+
+  try{
+
+    localStorage.setItem(
+      CHAVE,
+      JSON.stringify(banco)
+    );
+
+    return true;
+
+  }catch(erro){
+
+    alert(
+      "Não foi possível salvar os dados."
+    );
+
+    return false;
+  }
+}
+
+function textoSeguro(valor){
+
+  var div =
+    document.createElement("div");
+
+  div.textContent =
+    valor === null ||
+    valor === undefined
+    ? ""
+    : String(valor);
+
+  return div.innerHTML;
+}
+
+function numeroCampo(id){
+
+  var valor =
+    el(id).value;
+
+  if(valor === ""){
+    return null;
+  }
+
+  var n =
+    parseFloat(valor);
+
+  if(isNaN(n)){
+    return null;
+  }
+
+  return n;
 }
 
 function loteAtual(){
- return banco.lotes.find(x=>x.id===banco.ativo);
+
+  var i;
+
+  for(
+    i=0;
+    i<banco.lotes.length;
+    i++
+  ){
+
+    if(
+      banco.lotes[i].id ===
+      banco.ativo
+    ){
+      return banco.lotes[i];
+    }
+  }
+
+  return null;
 }
 
-function numero(id){
- let v=parseFloat($(id).value);
- return isNaN(v)?null:v;
+function limparCadastro(){
+
+  el("nome").value = "";
+  el("estilo").value = "";
+  el("fermentador").value = "";
+  el("volume").value = "";
+  el("brixInicial").value = "";
+  el("brixAlvo").value = "";
+  el("pressaoAlvo").value = "";
+  el("inicio").value = hoje();
+
+  el("etapas").innerHTML = "";
+
+  adicionarEtapa();
 }
 
-function escapeHTML(v){
- return String(v??"")
- .replaceAll("&","&amp;")
- .replaceAll("<","&lt;")
- .replaceAll(">","&gt;");
+function adicionarEtapa(dados){
+
+  dados = dados || {};
+
+  var caixa =
+    document.createElement("div");
+
+  caixa.className = "etapa";
+
+  caixa.innerHTML =
+    '<div class="etapa-grid">' +
+
+      '<div>' +
+      '<label>Nome da etapa</label>' +
+      '<input class="etapaNome" ' +
+      'type="text" ' +
+      'placeholder="Ex.: Fermentação">' +
+      '</div>' +
+
+      '<div>' +
+      '<label>Temperatura °C</label>' +
+      '<input class="etapaTemp" ' +
+      'type="number" step="0.1">' +
+      '</div>' +
+
+      '<div>' +
+      '<label>Dia inicial</label>' +
+      '<input class="etapaInicio" ' +
+      'type="number" min="1">' +
+      '</div>' +
+
+      '<div>' +
+      '<label>Dia final</label>' +
+      '<input class="etapaFim" ' +
+      'type="number" min="1">' +
+      '</div>' +
+
+    '</div>' +
+
+    '<button type="button" ' +
+    'class="red removerEtapa">' +
+    'Remover etapa' +
+    '</button>';
+
+  el("etapas").appendChild(caixa);
+
+  caixa.querySelector(
+    ".etapaNome"
+  ).value =
+    dados.nome || "";
+
+  caixa.querySelector(
+    ".etapaTemp"
+  ).value =
+    dados.temperatura !== undefined
+    ? dados.temperatura
+    : "";
+
+  caixa.querySelector(
+    ".etapaInicio"
+  ).value =
+    dados.diaInicio || "";
+
+  caixa.querySelector(
+    ".etapaFim"
+  ).value =
+    dados.diaFim || "";
+
+  caixa.querySelector(
+    ".removerEtapa"
+  ).onclick = function(){
+
+    el("etapas")
+      .removeChild(caixa);
+
+    if(
+      el("etapas").children.length === 0
+    ){
+      adicionarEtapa();
+    }
+  };
 }
 
-function novo(){
+function coletarEtapas(){
 
- banco.ativo=null;
+  var caixas =
+    el("etapas")
+    .getElementsByClassName("etapa");
 
- [
- "nome","estilo","fermentador","volume",
- "brixInicial","brixAlvo","tempInicial",
- "pressaoAlvo","tempDiacetil","tempCold",
- "programa"
- ].forEach(id=>$(id).value="");
+  var resultado = [];
+  var i;
 
- gravar();
- render();
+  for(i=0;i<caixas.length;i++){
+
+    var nome =
+      caixas[i]
+      .querySelector(".etapaNome")
+      .value;
+
+    var temp =
+      caixas[i]
+      .querySelector(".etapaTemp")
+      .value;
+
+    var inicio =
+      caixas[i]
+      .querySelector(".etapaInicio")
+      .value;
+
+    var fim =
+      caixas[i]
+      .querySelector(".etapaFim")
+      .value;
+
+    if(
+      nome !== "" ||
+      temp !== "" ||
+      inicio !== "" ||
+      fim !== ""
+    ){
+
+      resultado.push({
+        nome:nome,
+        temperatura:
+          temp === ""
+          ? null
+          : parseFloat(temp),
+        diaInicio:
+          inicio === ""
+          ? null
+          : parseInt(inicio,10),
+        diaFim:
+          fim === ""
+          ? null
+          : parseInt(fim,10)
+      });
+    }
+  }
+
+  return resultado;
 }
 
 function salvarLote(){
 
- let nome=$("nome").value.trim();
- let inicial=numero("brixInicial");
+  var nome =
+    el("nome").value.trim();
 
- if(!nome){
-  alert("Digite o nome do lote.");
-  return;
- }
+  var brixInicial =
+    numeroCampo("brixInicial");
 
- if(inicial===null){
-  alert("Digite o Brix inicial.");
-  return;
- }
+  if(nome === ""){
 
- let lote=loteAtual();
+    alert(
+      "Digite o nome do lote."
+    );
 
- if(!lote){
+    return;
+  }
 
-  lote={
-   id:String(Date.now()),
-   inicio:new Date().toISOString().slice(0,10),
-   medicoes:[]
-  };
+  if(brixInicial === null){
 
-  banco.lotes.push(lote);
-  banco.ativo=lote.id;
- }
+    alert(
+      "Digite o Brix inicial."
+    );
 
- lote.nome=nome;
- lote.estilo=$("estilo").value;
- lote.fermentador=$("fermentador").value;
- lote.volume=numero("volume");
- lote.brixInicial=inicial;
- lote.brixAlvo=numero("brixAlvo");
- lote.tempInicial=numero("tempInicial");
- lote.pressaoAlvo=numero("pressaoAlvo");
- lote.tempDiacetil=numero("tempDiacetil");
- lote.tempCold=numero("tempCold");
- lote.programa=$("programa").value;
+    return;
+  }
 
- gravar();
- render();
+  var lote =
+    loteAtual();
 
- alert("Lote salvo!");
+  if(!lote){
+
+    lote = {
+      id:
+        String(new Date().getTime()),
+      medicoes:[]
+    };
+
+    banco.lotes.push(lote);
+    banco.ativo = lote.id;
+  }
+
+  lote.nome =
+    nome;
+
+  lote.estilo =
+    el("estilo").value;
+
+  lote.fermentador =
+    el("fermentador").value;
+
+  lote.volume =
+    numeroCampo("volume");
+
+  lote.brixInicial =
+    brixInicial;
+
+  lote.brixAlvo =
+    numeroCampo("brixAlvo");
+
+  lote.pressaoAlvo =
+    numeroCampo("pressaoAlvo");
+
+  lote.inicio =
+    el("inicio").value || hoje();
+
+  lote.etapas =
+    coletarEtapas();
+
+  if(gravar()){
+
+    render();
+
+    alert(
+      "Lote salvo com sucesso!"
+    );
+  }
 }
 
-function selecionar(){
+function novaReceita(){
 
- banco.ativo=$("lista").value || null;
-
- gravar();
- render();
-}
-
-function editar(){
-
- let l=loteAtual();
-
- if(!l){
-  alert("Selecione um lote.");
-  return;
- }
-
- $("nome").value=l.nome??"";
- $("estilo").value=l.estilo??"";
- $("fermentador").value=l.fermentador??"";
- $("volume").value=l.volume??"";
- $("brixInicial").value=l.brixInicial??"";
- $("brixAlvo").value=l.brixAlvo??"";
- $("tempInicial").value=l.tempInicial??"";
- $("pressaoAlvo").value=l.pressaoAlvo??"";
- $("tempDiacetil").value=l.tempDiacetil??"";
- $("tempCold").value=l.tempCold??"";
- $("programa").value=l.programa??"";
-
- window.scrollTo({
-  top:250,
-  behavior:"smooth"
- });
-}
-
-function excluir(){
-
- let l=loteAtual();
-
- if(!l)return;
-
- if(confirm("Excluir o lote "+l.nome+"?")){
-
-  banco.lotes=
-  banco.lotes.filter(x=>x.id!==l.id);
-
-  banco.ativo=null;
+  banco.ativo = "";
 
   gravar();
+
+  limparCadastro();
+
   render();
- }
+}
+
+function selecionarLote(){
+
+  banco.ativo =
+    el("lista").value;
+
+  gravar();
+
+  render();
+}
+
+function editarLote(){
+
+  var lote =
+    loteAtual();
+
+  if(!lote){
+
+    alert(
+      "Selecione um lote."
+    );
+
+    return;
+  }
+
+  preencherCadastro(lote);
+
+  window.scrollTo(
+    0,
+    300
+  );
+}
+
+function preencherCadastro(lote){
+
+  el("nome").value =
+    lote.nome || "";
+
+  el("estilo").value =
+    lote.estilo || "";
+
+  el("fermentador").value =
+    lote.fermentador || "";
+
+  el("volume").value =
+    lote.volume !== null &&
+    lote.volume !== undefined
+    ? lote.volume
+    : "";
+
+  el("brixInicial").value =
+    lote.brixInicial !== null &&
+    lote.brixInicial !== undefined
+    ? lote.brixInicial
+    : "";
+
+  el("brixAlvo").value =
+    lote.brixAlvo !== null &&
+    lote.brixAlvo !== undefined
+    ? lote.brixAlvo
+    : "";
+
+  el("pressaoAlvo").value =
+    lote.pressaoAlvo !== null &&
+    lote.pressaoAlvo !== undefined
+    ? lote.pressaoAlvo
+    : "";
+
+  el("inicio").value =
+    lote.inicio || hoje();
+
+  el("etapas").innerHTML = "";
+
+  if(
+    lote.etapas &&
+    lote.etapas.length
+  ){
+
+    var i;
+
+    for(
+      i=0;
+      i<lote.etapas.length;
+      i++
+    ){
+      adicionarEtapa(
+        lote.etapas[i]
+      );
+    }
+
+  }else{
+
+    adicionarEtapa();
+  }
+}
+
+function excluirLote(){
+
+  var lote =
+    loteAtual();
+
+  if(!lote){
+
+    alert(
+      "Selecione um lote."
+    );
+
+    return;
+  }
+
+  if(
+    !confirm(
+      "Excluir o lote " +
+      lote.nome +
+      "?"
+    )
+  ){
+    return;
+  }
+
+  var novos = [];
+  var i;
+
+  for(
+    i=0;
+    i<banco.lotes.length;
+    i++
+  ){
+
+    if(
+      banco.lotes[i].id !==
+      lote.id
+    ){
+      novos.push(
+        banco.lotes[i]
+      );
+    }
+  }
+
+  banco.lotes =
+    novos;
+
+  banco.ativo = "";
+
+  gravar();
+
+  limparCadastro();
+
+  render();
+}
+
+function diferencaDias(dataInicio){
+
+  if(!dataInicio){
+    return 1;
+  }
+
+  var partes =
+    dataInicio.split("-");
+
+  if(partes.length !== 3){
+    return 1;
+  }
+
+  var inicio =
+    new Date(
+      parseInt(partes[0],10),
+      parseInt(partes[1],10)-1,
+      parseInt(partes[2],10),
+      12,0,0
+    );
+
+  var agora =
+    new Date();
+
+  var diferenca =
+    agora.getTime() -
+    inicio.getTime();
+
+  var dias =
+    Math.floor(
+      diferenca /
+      86400000
+    ) + 1;
+
+  if(dias < 1){
+    dias = 1;
+  }
+
+  return dias;
+}
+
+function etapaDoDia(lote,dia){
+
+  if(
+    !lote.etapas ||
+    !lote.etapas.length
+  ){
+    return null;
+  }
+
+  var i;
+
+  for(
+    i=0;
+    i<lote.etapas.length;
+    i++
+  ){
+
+    var etapa =
+      lote.etapas[i];
+
+    if(
+      etapa.diaInicio !== null &&
+      etapa.diaFim !== null &&
+      dia >= etapa.diaInicio &&
+      dia <= etapa.diaFim
+    ){
+      return etapa;
+    }
+  }
+
+  return null;
+}
+
+function proximaEtapa(lote,dia){
+
+  if(
+    !lote.etapas ||
+    !lote.etapas.length
+  ){
+    return null;
+  }
+
+  var candidata = null;
+  var i;
+
+  for(
+    i=0;
+    i<lote.etapas.length;
+    i++
+  ){
+
+    var etapa =
+      lote.etapas[i];
+
+    if(
+      etapa.diaInicio !== null &&
+      etapa.diaInicio > dia
+    ){
+
+      if(
+        candidata === null ||
+        etapa.diaInicio <
+        candidata.diaInicio
+      ){
+        candidata = etapa;
+      }
+    }
+  }
+
+  return candidata;
+}
+
+function assistenteHTML(lote){
+
+  if(!lote){
+
+    return (
+      '<div class="stage">' +
+      'Nenhum lote selecionado' +
+      '</div>' +
+      '<p>Cadastre ou selecione um lote.</p>'
+    );
+  }
+
+  var dia =
+    diferencaDias(lote.inicio);
+
+  var etapa =
+    etapaDoDia(lote,dia);
+
+  var proxima =
+    proximaEtapa(lote,dia);
+
+  var html =
+    '<div class="stage">' +
+    textoSeguro(lote.nome) +
+    '</div>' +
+
+    '<span class="badge">' +
+    'Dia ' + dia +
+    '</span>';
+
+  if(etapa){
+
+    html +=
+      '<h3>' +
+      textoSeguro(
+        etapa.nome ||
+        "Etapa programada"
+      ) +
+      '</h3>';
+
+    if(
+      etapa.temperatura !== null
+    ){
+
+      html +=
+        '<p>Temperatura programada hoje: ' +
+        '<b>' +
+        etapa.temperatura +
+        ' °C</b></p>';
+    }
+
+    html +=
+      '<p>Dias desta etapa: ' +
+      '<b>' +
+      etapa.diaInicio +
+      ' a ' +
+      etapa.diaFim +
+      '</b></p>';
+
+  }else{
+
+    html +=
+      '<p>Não existe uma etapa ' +
+      'programada para o dia de hoje.</p>';
+  }
+
+  if(proxima){
+
+    html +=
+      '<p class="small">' +
+      'Próxima etapa: ' +
+      '<b>' +
+      textoSeguro(
+        proxima.nome ||
+        "Etapa"
+      ) +
+      '</b>, começando no dia ' +
+      proxima.diaInicio;
+
+    if(
+      proxima.temperatura !== null
+    ){
+
+      html +=
+        ' a ' +
+        proxima.temperatura +
+        ' °C';
+    }
+
+    html +=
+      '.</p>';
+  }
+
+  if(
+    lote.medicoes &&
+    lote.medicoes.length
+  ){
+
+    var ultima =
+      lote.medicoes[
+        lote.medicoes.length-1
+      ];
+
+    html +=
+      '<hr style="border-color:#444">' +
+      '<p>Última medição:</p>' +
+      '<p>Brix: <b>' +
+      ultima.brix +
+      '</b><br>' +
+      'Temperatura: <b>' +
+      (
+        ultima.temperatura !== null
+        ? ultima.temperatura + " °C"
+        : "-"
+      ) +
+      '</b><br>' +
+      'Pressão: <b>' +
+      (
+        ultima.pressao !== null
+        ? ultima.pressao + " bar"
+        : "-"
+      ) +
+      '</b></p>';
+
+    if(
+      etapa &&
+      etapa.temperatura !== null &&
+      ultima.temperatura !== null
+    ){
+
+      var diferenca =
+        ultima.temperatura -
+        etapa.temperatura;
+
+      if(
+        Math.abs(diferenca) <= 0.5
+      ){
+
+        html +=
+          '<p>✅ Temperatura próxima da meta.</p>';
+
+      }else if(diferenca > 0){
+
+        html +=
+          '<p>⚠️ Temperatura está ' +
+          Math.abs(diferenca)
+          .toFixed(1) +
+          ' °C acima da programação.</p>';
+
+      }else{
+
+        html +=
+          '<p>⚠️ Temperatura está ' +
+          Math.abs(diferenca)
+          .toFixed(1) +
+          ' °C abaixo da programação.</p>';
+      }
+    }
+  }
+
+  return html;
 }
 
 function registrarMedicao(){
 
- let l=loteAtual();
+  var lote =
+    loteAtual();
 
- if(!l){
-  alert("Selecione um lote.");
-  return;
- }
+  if(!lote){
 
- let b=numero("brix");
+    alert(
+      "Selecione um lote primeiro."
+    );
 
- if(b===null){
-  alert("Digite o Brix atual.");
-  return;
- }
+    return;
+  }
 
- l.medicoes.push({
+  var brix =
+    numeroCampo("brixAtual");
 
-  data:$("data").value ||
-  new Date().toISOString().slice(0,10),
+  if(brix === null){
 
-  brix:b,
-  temperatura:numero("temperatura"),
-  pressao:numero("pressao"),
-  observacao:$("observacao").value
+    alert(
+      "Digite o Brix atual."
+    );
 
- });
+    return;
+  }
 
- gravar();
+  if(!lote.medicoes){
+    lote.medicoes = [];
+  }
 
- $("brix").value="";
- $("temperatura").value="";
- $("pressao").value="";
- $("observacao").value="";
+  lote.medicoes.push({
+    data:
+      el("dataMedicao").value ||
+      hoje(),
 
- render();
-}
+    brix:brix,
 
-function tendencia(l){
+    temperatura:
+      numeroCampo(
+        "temperaturaAtual"
+      ),
 
- let m=l.medicoes;
+    pressao:
+      numeroCampo(
+        "pressaoAtual"
+      ),
 
- if(m.length<2)
- return "Aguardando mais medições";
+    observacao:
+      el("observacao").value
+  });
 
- let atual=m[m.length-1].brix;
- let anterior=m[m.length-2].brix;
+  if(gravar()){
 
- let diferenca=atual-anterior;
+    el("brixAtual").value = "";
+    el("temperaturaAtual").value = "";
+    el("pressaoAtual").value = "";
+    el("observacao").value = "";
 
- if(diferenca < -0.2)
- return "↓ Brix caindo";
+    render();
 
- if(diferenca > 0.2)
- return "↑ Brix subindo";
-
- return "→ Brix praticamente estável";
-}
-
-function brixEstavel(l){
-
- let m=l.medicoes;
-
- if(m.length<3)
- return false;
-
- let a=m[m.length-1].brix;
- let b=m[m.length-2].brix;
- let c=m[m.length-3].brix;
-
- return(
-  Math.abs(a-b)<=0.2 &&
-  Math.abs(b-c)<=0.2
- );
-}
-
-function diasFermentando(l){
-
- let inicio=new Date(l.inicio+"T12:00:00");
- let hoje=new Date();
-
- return Math.max(
-  1,
-  Math.floor((hoje-inicio)/86400000)+1
- );
+    alert(
+      "Medição registrada!"
+    );
+  }
 }
 
 function sgBrix(brix){
 
- return 1+
- brix/
- (258.6-((brix/258.2)*227.1));
+  return 1 +
+    brix /
+    (
+      258.6 -
+      (
+        (brix / 258.2) *
+        227.1
+      )
+    );
 }
 
-function fgCorrigida(original,final){
+function fgCorrigida(
+  original,
+  finalBrix
+){
 
- return(
-  1.001843
-  -0.002318474*original
-  -0.000007775*original*original
-  -0.000000034*original*original*original
-  +0.00574*final
-  +0.00003344*final*final
-  +0.000000086*final*final*final
- );
+  return (
+    1.001843
+    -0.002318474*original
+    -0.000007775*
+      original*original
+    -0.000000034*
+      original*original*original
+    +0.00574*finalBrix
+    +0.00003344*
+      finalBrix*finalBrix
+    +0.000000086*
+      finalBrix*finalBrix*finalBrix
+  );
 }
 
-function calcular(l,m){
+function resumoHTML(lote){
 
- let og=sgBrix(l.brixInicial);
+  if(!lote){
 
- let fg=
- fgCorrigida(
-  l.brixInicial,
-  m.brix
- );
+    return "Selecione um lote.";
+  }
 
- let abv=(og-fg)*131.25;
+  if(
+    !lote.medicoes ||
+    !lote.medicoes.length
+  ){
 
- let atenuacao=
- ((og-fg)/(og-1))*100;
+    return (
+      "Aguardando a primeira medição."
+    );
+  }
 
- return{
-  og:og,
-  fg:fg,
-  abv:abv,
-  atenuacao:atenuacao
- };
+  var ultima =
+    lote.medicoes[
+      lote.medicoes.length-1
+    ];
+
+  var og =
+    sgBrix(
+      lote.brixInicial
+    );
+
+  var fg =
+    fgCorrigida(
+      lote.brixInicial,
+      ultima.brix
+    );
+
+  var abv =
+    (og-fg) * 131.25;
+
+  var atenuacao =
+    ((og-fg)/(og-1))*100;
+
+  return (
+    'OG estimada: <b>' +
+    og.toFixed(3) +
+    '</b><br>' +
+
+    'FG corrigida estimada: <b>' +
+    fg.toFixed(3) +
+    '</b><br>' +
+
+    'Atenuação estimada: <b>' +
+    atenuacao.toFixed(1) +
+    '%</b><br>' +
+
+    'Álcool estimado: <b>' +
+    abv.toFixed(1) +
+    '% ABV</b>' +
+
+    '<p class="small">' +
+    'Valores calculados a partir do ' +
+    'Brix inicial e da leitura atual. ' +
+    'Durante a fermentação o álcool ' +
+    'interfere na leitura do refratômetro.' +
+    '</p>'
+  );
 }
 
-function montarAssistente(l){
+function historicoHTML(lote){
 
- if(!l){
+  if(
+    !lote ||
+    !lote.medicoes
+  ){
+    return "";
+  }
 
-  return `
-  <div class="stage">
-  Nenhum lote selecionado
-  </div>
-  <p>Cadastre ou selecione um lote.</p>
-  `;
- }
+  var html = "";
+  var i;
 
- let m=l.medicoes;
+  for(
+    i=lote.medicoes.length-1;
+    i>=0;
+    i--
+  ){
 
- if(!m.length){
+    var m =
+      lote.medicoes[i];
 
-  return `
-  <div class="stage">
-  AGUARDANDO PRIMEIRA MEDIÇÃO
-  </div>
+    html +=
+      '<tr>' +
 
-  <p>
-  Dia aproximado:
-  <b>${diasFermentando(l)}</b>
-  </p>
+      '<td>' +
+      textoSeguro(m.data) +
+      '</td>' +
 
-  <p>
-  Registre Brix, temperatura e pressão
-  para iniciar o acompanhamento.
-  </p>
+      '<td>' +
+      m.brix +
+      '</td>' +
 
-  <p>
-  <b>Programa cadastrado:</b><br>
-  ${escapeHTML(l.programa || "Não informado")}
-  </p>
-  `;
- }
+      '<td>' +
+      (
+        m.temperatura !== null
+        ? m.temperatura
+        : "-"
+      ) +
+      '</td>' +
 
- let ultima=m[m.length-1];
+      '<td>' +
+      (
+        m.pressao !== null
+        ? m.pressao
+        : "-"
+      ) +
+      '</td>' +
 
- let estavel=brixEstavel(l);
+      '<td>' +
+      textoSeguro(
+        m.observacao || "-"
+      ) +
+      '</td>' +
 
- let etapa=
- estavel
- ? "BRIX ESTÁVEL"
- : "FERMENTAÇÃO EM ACOMPANHAMENTO";
+      '</tr>';
+  }
 
- let aviso=
- estavel
- ? `
- As três últimas leituras estão próximas.
- Confirme a densidade final e os critérios
- da sua receita antes de encerrar a fermentação
- ou iniciar a próxima etapa.
- `
- : `
- Continue acompanhando a tendência.
- Temperatura, pressão, descanso de diacetil
- e cold crash devem seguir os parâmetros
- definidos para este lote.
- `;
+  return html;
+}
 
- return `
+function render(){
 
- <div class="stage">
- ${etapa}
- </div>
+  var lista =
+    el("lista");
 
- <div class="metric">
+  lista.innerHTML =
+    '<option value="">' +
+    'Selecione...' +
+    '</option>';
 
- <span class="badge">
- Dia ${diasFermentando(l)}
- </span>
+  var i;
 
- <span class="badge">
- ${tendencia(l)}
- </span>
+  for(
+    i=0;
+    i<banco.lotes.length;
+    i++
+  ){
 
- <br><br>
+    var option =
+      document.createElement(
+        "option"
+      );
 
- Brix atual:
- <b>${ultima.brix}</b><br>
+    option.value =
+      banco.lotes[i].id;
 
- Temperatura atual:
- <b>${ultima.temperatura ?? "-"} °C</b><br>
+    option.textContent =
+      banco.lotes[i].nome;
 
- Pressão atual:
- <b>${ultima.pressao ?? "-"} bar</b><br>
+    lista.appendChild(option);
+  }
 
- Brix alvo:
- <b>${l.brixAlvo ?? "-"}</b><br>
+  lista.value =
+    banco.ativo || "";
 
- Pressão alvo:
- <b>${l.pressaoAlvo ?? "-"} bar</b>
+  var lote =
+    loteAtual();
 
- <br><br>
+  if(lote){
 
- <b class="gold">
- Acompanhamento:
- </b>
+    el("tituloMedicao")
+      .textContent =
+      "🌡️ Nova medição — " +
+      lote.nome;
 
- <br>
+  }else{
 
- ${aviso}
+    el("tituloMedicao")
+      .textContent =
+      "🌡️ Nova medição";
+  }
 
- <br>
+  el("assistente")
+    .innerHTML =
+    assistenteHTML(lote);
 
- <b>Programa cadastrado:</b><br>
- ${escapeHTML(l.programa || "
+  el("resumo")
+    .innerHTML =
+    resumoHTML(lote);
+
+  el("historico")
+    .innerHTML =
+    historicoHTML(lote);
+}
+
+function backup(){
+
+  var texto =
+    JSON.stringify(
+      banco,
+      null,
+      2
+    );
+
+  var blob =
+    new Blob(
+      [texto],
+      {
+        type:"application/json"
+      }
+    );
+
+  var url =
+    URL.createObjectURL(blob);
+
+  var a =
+    document.createElement("a");
+
+  a.href = url;
+
+  a.download =
+    "mister-emis-backup.json";
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  document.body.removeChild(a);
+
+  setTimeout(
+    function(){
+      URL.revokeObjectURL(url);
+    },
+    1000
+  );
+}
+
+function restaurarArquivo(evento){
+
+  var arquivo =
+    evento.target.files[0];
+
+  if(!arquivo){
+    return;
+  }
+
+  var leitor =
+    new FileReader();
+
+  leitor.onload =
+    function(){
+
+      try{
+
+        var dados =
+          JSON.parse(
+            leitor.result
+          );
+
+        if(
+          !dados ||
+          !dados.lotes ||
+          !Array.isArray(
+            dados.lotes
+          )
+        ){
+          throw new Error(
+            "Backup inválido"
+          );
+        }
+
+        if(
+          confirm(
+            "Restaurar este backup?"
+          )
+        ){
+
+          banco = dados;
+
+          gravar();
+
+          limparCadastro();
+
+          render();
+
+          alert(
+            "Backup restaurado!"
+          );
+        }
+
+      }catch(erro){
+
+        alert(
+          "Arquivo de backup inválido."
+        );
+      }
+
+      evento.target.value = "";
+    };
+
+  leitor.readAsText(arquivo);
+}
+
+
+/* BOTÕES */
+
+el("btnSalvar").onclick =
+  salvarLote;
+
+el("btnNova").onclick =
+  novaReceita;
+
+el("btnEditar").onclick =
+  editarLote;
+
+el("btnExcluir").onclick =
+  excluirLote;
+
+el("lista").onchange =
+  selecionarLote;
+
+el("btnAdicionarEtapa").onclick =
+  function(){
+    adicionarEtapa();
+  };
+
+el("btnMedicao").onclick =
+  registrarMedicao;
+
+el("btnBackup").onclick =
+  backup;
+
+el("btnRestaurar").onclick =
+  function(){
+    el("arquivoBackup").click();
+  };
+
+el("arquivoBackup").onchange =
+  restaurarArquivo;
+
+
+/* INÍCIO */
+
+carregar();
+
+el("inicio").value =
+  hoje();
+
+el("dataMedicao").value =
+  hoje();
+
+adicionarEtapa();
+
+render();
+
+
+/* PWA */
+
+if(
+  "serviceWorker" in navigator
+){
+
+  window.addEventListener(
+    "load",
+    function(){
+
+      navigator
+      .serviceWorker
+      .register("./sw.js")
+      .catch(
+        function(erro){
+          console.log(erro);
+        }
+      );
+    }
+  );
+}
+
+})();
+</script>
+
+</body>
+</html>
