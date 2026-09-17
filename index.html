@@ -2440,6 +2440,25 @@ if(
 
 })();
 </script>
-
+<script type="module">  
+  // Import the functions you need from the SDKs you need  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";  
+  // TODO: Add SDKs for Firebase products that you want to use  
+  // https://firebase.google.com/docs/web/setup#available-libraries  
+  
+  // Your web app's Firebase configuration  
+  const firebaseConfig = {  
+    apiKey: "AIzaSyCEIV48381Z-RDG_7eCvG_vvjkpTPxrz7c",  
+    authDomain: "mister-emis.firebaseapp.com",  
+    databaseURL: "https://mister-emis-default-rtdb.firebaseio.com",  
+    projectId: "mister-emis",  
+    storageBucket: "mister-emis.firebasestorage.app",  
+    messagingSenderId: "926165757225",  
+    appId: "1:926165757225:web:168322900c3f1f08ab1b38"  
+  };  
+  
+  // Initialize Firebase  
+  const app = initializeApp(firebaseConfig);  
+</script>
 </body>
 </html>
