@@ -182,7 +182,7 @@ button{
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:650px;
+  min-width:700px;
 }
 
 th,
@@ -231,13 +231,15 @@ td{
 >
 
 <div>
-  <div class="title">
-    MISTER EMIS
-  </div>
 
-  <div class="subtitle">
-    Controle de Fermentação • V5.2
-  </div>
+<div class="title">
+MISTER EMIS
+</div>
+
+<div class="subtitle">
+Controle de Fermentação • V5.2
+</div>
+
 </div>
 
 </div>
@@ -447,6 +449,17 @@ Cadastre ou selecione um lote.
   step="0.1">
 </div>
 
+<div>
+<label>pH atual</label>
+<input
+  id="phAtual"
+  type="number"
+  step="0.01"
+  min="0"
+  max="14"
+  placeholder="Ex.: 4.30">
+</div>
+
 </div>
 
 <label>Observações</label>
@@ -490,6 +503,7 @@ Selecione um lote.
 <th>Brix</th>
 <th>°C</th>
 <th>Bar</th>
+<th>pH</th>
 <th>Observação</th>
 </tr>
 </thead>
@@ -559,9 +573,12 @@ var modoCadastro = "visualizar";
 var editandoId = "";
 var visualizarArquivados = false;
 
+
 function el(id){
+
   return document.getElementById(id);
 }
+
 
 function hoje(){
 
@@ -571,6 +588,7 @@ function hoje(){
     String(d.getMonth()+1);
 
   if(mes.length < 2){
+
     mes = "0" + mes;
   }
 
@@ -578,6 +596,7 @@ function hoje(){
     String(d.getDate());
 
   if(dia.length < 2){
+
     dia = "0" + dia;
   }
 
@@ -585,6 +604,7 @@ function hoje(){
     "-" + mes +
     "-" + dia;
 }
+
 
 function carregar(){
 
@@ -603,6 +623,7 @@ function carregar(){
         dados.lotes &&
         Array.isArray(dados.lotes)
       ){
+
         banco = dados;
       }
     }
@@ -643,6 +664,7 @@ function carregar(){
   }
 }
 
+
 function gravar(){
 
   try{
@@ -664,6 +686,7 @@ function gravar(){
   }
 }
 
+
 function textoSeguro(valor){
 
   var div =
@@ -678,12 +701,14 @@ function textoSeguro(valor){
   return div.innerHTML;
 }
 
+
 function numeroCampo(id){
 
   var valor =
     el(id).value;
 
   if(valor === ""){
+
     return null;
   }
 
@@ -691,11 +716,13 @@ function numeroCampo(id){
     parseFloat(valor);
 
   if(isNaN(n)){
+
     return null;
   }
 
   return n;
 }
+
 
 function loteAtual(){
 
@@ -711,12 +738,14 @@ function loteAtual(){
       banco.lotes[i].id ===
       banco.ativo
     ){
+
       return banco.lotes[i];
     }
   }
 
   return null;
 }
+
 
 function limparCadastro(){
 
@@ -733,6 +762,7 @@ function limparCadastro(){
 
   adicionarEtapa();
 }
+
 
 function adicionarEtapa(dados){
 
@@ -813,10 +843,12 @@ function adicionarEtapa(dados){
     if(
       el("etapas").children.length === 0
     ){
+
       adicionarEtapa();
     }
   };
 }
+
 
 function coletarEtapas(){
 
@@ -827,7 +859,11 @@ function coletarEtapas(){
   var resultado = [];
   var i;
 
-  for(i=0;i<caixas.length;i++){
+  for(
+    i=0;
+    i<caixas.length;
+    i++
+  ){
 
     var nome =
       caixas[i]
@@ -880,6 +916,7 @@ function coletarEtapas(){
 
   return resultado;
 }
+
 
 function salvarLote(){
 
@@ -1007,6 +1044,7 @@ function salvarLote(){
   }
 }
 
+
 function novaReceita(){
 
   modoCadastro =
@@ -1022,6 +1060,7 @@ function novaReceita(){
     300
   );
 }
+
 
 function selecionarLote(){
 
@@ -1046,6 +1085,7 @@ function selecionarLote(){
 
   render();
 }
+
 
 function editarLote(){
 
@@ -1074,6 +1114,7 @@ function editarLote(){
     300
   );
 }
+
 
 function preencherCadastro(lote){
 
@@ -1139,6 +1180,7 @@ function preencherCadastro(lote){
   }
 }
 
+
 function finalizarLote(){
 
   var lote =
@@ -1165,6 +1207,7 @@ function finalizarLote(){
         "?"
       )
     ){
+
       return;
     }
 
@@ -1186,6 +1229,7 @@ function finalizarLote(){
         "? Ele continuará salvo em Arquivados."
       )
     ){
+
       return;
     }
 
@@ -1203,6 +1247,7 @@ function finalizarLote(){
 
   render();
 }
+
 
 function alternarArquivados(){
 
@@ -1222,6 +1267,7 @@ function alternarArquivados(){
 
   render();
 }
+
 
 function excluirLote(){
 
@@ -1244,6 +1290,7 @@ function excluirLote(){
       "? Todo o histórico de medições também será apagado."
     )
   ){
+
     return;
   }
 
@@ -1286,9 +1333,11 @@ function excluirLote(){
   render();
 }
 
+
 function diferencaDias(dataInicio){
 
   if(!dataInicio){
+
     return 1;
   }
 
@@ -1296,6 +1345,7 @@ function diferencaDias(dataInicio){
     dataInicio.split("-");
 
   if(partes.length !== 3){
+
     return 1;
   }
 
@@ -1321,11 +1371,13 @@ function diferencaDias(dataInicio){
     ) + 1;
 
   if(dias < 1){
+
     dias = 1;
   }
 
   return dias;
 }
+
 
 function etapaDoDia(lote,dia){
 
@@ -1333,6 +1385,7 @@ function etapaDoDia(lote,dia){
     !lote.etapas ||
     !lote.etapas.length
   ){
+
     return null;
   }
 
@@ -1361,12 +1414,14 @@ function etapaDoDia(lote,dia){
   return null;
 }
 
+
 function proximaEtapa(lote,dia){
 
   if(
     !lote.etapas ||
     !lote.etapas.length
   ){
+
     return null;
   }
 
@@ -1403,6 +1458,7 @@ function proximaEtapa(lote,dia){
 
   return candidata;
 }
+
 
 function assistenteHTML(lote){
 
@@ -1527,6 +1583,7 @@ function assistenteHTML(lote){
 
     html +=
       '<hr style="border-color:#444">' +
+
       '<p>Última medição:</p>' +
 
       '<p>Brix: <b>' +
@@ -1535,7 +1592,8 @@ function assistenteHTML(lote){
 
       'Temperatura: <b>' +
       (
-        ultima.temperatura !== null
+        ultima.temperatura !== null &&
+        ultima.temperatura !== undefined
         ? ultima.temperatura +
           " °C"
         : "-"
@@ -1544,17 +1602,30 @@ function assistenteHTML(lote){
 
       'Pressão: <b>' +
       (
-        ultima.pressao !== null
+        ultima.pressao !== null &&
+        ultima.pressao !== undefined
         ? ultima.pressao +
           " bar"
         : "-"
       ) +
+      '</b><br>' +
+
+      'pH: <b>' +
+      (
+        ultima.ph !== null &&
+        ultima.ph !== undefined
+        ? ultima.ph.toFixed(2)
+        : "-"
+      ) +
+
       '</b></p>';
+
 
     if(
       etapa &&
       etapa.temperatura !== null &&
-      ultima.temperatura !== null
+      ultima.temperatura !== null &&
+      ultima.temperatura !== undefined
     ){
 
       var diferenca =
@@ -1587,6 +1658,7 @@ function assistenteHTML(lote){
           ' °C abaixo da programação.</p>';
       }
     }
+
 
     if(
       lote.brixAlvo !== null &&
@@ -1628,6 +1700,7 @@ function assistenteHTML(lote){
           ' °Bx</b>.</p>';
       }
     }
+
 
     if(
       lote.medicoes.length >= 2
@@ -1692,6 +1765,7 @@ function assistenteHTML(lote){
   return html;
 }
 
+
 function registrarMedicao(){
 
   var lote =
@@ -1730,6 +1804,24 @@ function registrarMedicao(){
     return;
   }
 
+  var ph =
+    numeroCampo("phAtual");
+
+  if(
+    ph !== null &&
+    (
+      ph < 0 ||
+      ph > 14
+    )
+  ){
+
+    alert(
+      "Digite um valor de pH entre 0 e 14."
+    );
+
+    return;
+  }
+
   if(!lote.medicoes){
 
     lote.medicoes =
@@ -1754,6 +1846,8 @@ function registrarMedicao(){
         "pressaoAtual"
       ),
 
+    ph:ph,
+
     observacao:
       el("observacao").value
   });
@@ -1769,6 +1863,9 @@ function registrarMedicao(){
     el("pressaoAtual").value =
       "";
 
+    el("phAtual").value =
+      "";
+
     el("observacao").value =
       "";
 
@@ -1779,6 +1876,7 @@ function registrarMedicao(){
     );
   }
 }
+
 
 function sgBrix(brix){
 
@@ -1792,6 +1890,7 @@ function sgBrix(brix){
       )
     );
 }
+
 
 function fgCorrigida(
   original,
@@ -1812,6 +1911,7 @@ function fgCorrigida(
       finalBrix*finalBrix*finalBrix
   );
 }
+
 
 function resumoHTML(lote){
 
@@ -1852,6 +1952,19 @@ function resumoHTML(lote){
   var atenuacao =
     ((og-fg)/(og-1))*100;
 
+  var phResumo = "";
+
+  if(
+    ultima.ph !== null &&
+    ultima.ph !== undefined
+  ){
+
+    phResumo =
+      '<br>Último pH: <b>' +
+      ultima.ph.toFixed(2) +
+      '</b>';
+  }
+
   return (
     'OG estimada: <b>' +
     og.toFixed(3) +
@@ -1869,6 +1982,8 @@ function resumoHTML(lote){
     abv.toFixed(1) +
     '% ABV</b>' +
 
+    phResumo +
+
     '<p class="small">' +
     'Valores calculados a partir do ' +
     'Brix inicial e da leitura atual. ' +
@@ -1878,12 +1993,14 @@ function resumoHTML(lote){
   );
 }
 
+
 function historicoHTML(lote){
 
   if(
     !lote ||
     !lote.medicoes
   ){
+
     return "";
   }
 
@@ -1912,7 +2029,8 @@ function historicoHTML(lote){
 
       '<td>' +
       (
-        m.temperatura !== null
+        m.temperatura !== null &&
+        m.temperatura !== undefined
         ? m.temperatura
         : "-"
       ) +
@@ -1920,8 +2038,18 @@ function historicoHTML(lote){
 
       '<td>' +
       (
-        m.pressao !== null
+        m.pressao !== null &&
+        m.pressao !== undefined
         ? m.pressao
+        : "-"
+      ) +
+      '</td>' +
+
+      '<td>' +
+      (
+        m.ph !== null &&
+        m.ph !== undefined
+        ? Number(m.ph).toFixed(2)
         : "-"
       ) +
       '</td>' +
@@ -1937,6 +2065,7 @@ function historicoHTML(lote){
 
   return html;
 }
+
 
 function render(){
 
@@ -1967,6 +2096,7 @@ function render(){
       visualizarArquivados &&
       !finalizado
     ){
+
       continue;
     }
 
@@ -1974,6 +2104,7 @@ function render(){
       !visualizarArquivados &&
       finalizado
     ){
+
       continue;
     }
 
@@ -2061,6 +2192,7 @@ function render(){
     historicoHTML(lote);
 }
 
+
 function backup(){
 
   var texto =
@@ -2106,12 +2238,14 @@ function backup(){
   );
 }
 
+
 function restaurarArquivo(evento){
 
   var arquivo =
     evento.target.files[0];
 
   if(!arquivo){
+
     return;
   }
 
