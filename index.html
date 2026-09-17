@@ -2,167 +2,109 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#17130c">
 <link rel="manifest" href="./manifest.json">
-
-<title>Mister Emis - Controle de Fermentação</title>
+<title>Mister Emis - Fermentação V5</title>
 
 <style>
 *{box-sizing:border-box}
-
 body{
- margin:0;
- background:#0d0d0d;
- color:#f5f5f5;
+ margin:0;background:#0d0d0d;color:#f5f5f5;
  font-family:Arial,sans-serif
 }
-
 header{
- background:#17130c;
- border-bottom:3px solid #e5a91c;
- padding:22px 20px
-}
-
-.brand{
- display:flex;
- align-items:center;
- gap:15px;
- max-width:900px;
- margin:auto
-}
-
-.logo{
- width:105px;
- height:105px;
- object-fit:contain;
- border-radius:18px
-}
-
-.brand-title{
- color:#f0b323;
- font-size:30px;
- font-weight:800
-}
-
-.brand-sub{
- font-size:18px;
- margin-top:5px
-}
-
-main{
- max-width:900px;
- margin:auto;
+ background:#17130c;border-bottom:3px solid #e5a91c;
  padding:20px
 }
+.brand{
+ max-width:900px;margin:auto;display:flex;
+ align-items:center;gap:15px
+}
+.logo{
+ width:105px;height:105px;object-fit:contain;
+ border-radius:18px
+}
+.title{font-size:29px;font-weight:bold;color:#f0b323}
+.subtitle{font-size:17px;margin-top:5px}
+
+main{max-width:900px;margin:auto;padding:16px}
 
 .card{
- background:#1b1b1b;
- border-radius:22px;
- padding:24px;
- margin-bottom:20px
+ background:#1b1b1b;border-radius:20px;
+ padding:20px;margin-bottom:18px
 }
+.card.assistant{border:1px solid #8c6819}
 
-h3{
- font-size:25px;
- margin:0 0 20px
+h2{margin:0 0 16px;font-size:23px}
+
+label{
+ display:block;color:#ddd;
+ margin:3px 0 6px
 }
 
 input,select,textarea{
- width:100%;
- background:#101010;
- border:1px solid #444;
- color:white;
- padding:16px;
- border-radius:12px;
- font-size:18px;
- margin-bottom:14px
+ width:100%;background:#101010;color:#fff;
+ border:1px solid #444;border-radius:11px;
+ padding:14px;font-size:16px;margin-bottom:12px
 }
 
-textarea{
- min-height:80px
-}
+textarea{min-height:80px}
 
-button{
- border:0;
- border-radius:10px;
- padding:14px 18px;
- font-size:17px;
- font-weight:bold;
- cursor:pointer
-}
-
-.btn{
- background:#f0b323;
- color:#111
-}
-
-.edit{
- background:#444;
- color:white
-}
-
-.delete{
- background:#842d30;
- color:white
+.grid{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:10px
 }
 
 .actions{
- display:flex;
- gap:10px;
- flex-wrap:wrap
+ display:flex;gap:8px;flex-wrap:wrap
 }
 
-.grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px
+button{
+ border:0;border-radius:10px;padding:13px 16px;
+ font-size:15px;font-weight:bold;
+ background:#f0b323;color:#111
 }
 
-.result{
- font-size:18px;
- line-height:1.6
+.gray{background:#444;color:#fff}
+.red{background:#812d30;color:#fff}
+
+.stage{
+ color:#f0b323;font-size:22px;
+ font-weight:bold;margin-bottom:10px
 }
 
-.good{
- color:#6fdc8c;
- font-weight:bold
+.small{
+ color:#aaa;font-size:13px;
+ line-height:1.5
 }
 
-.warn{
- color:#ffcc55;
- font-weight:bold
+.metric{line-height:1.7}
+
+.badge{
+ display:inline-block;background:#302713;
+ border:1px solid #8c6819;border-radius:20px;
+ padding:7px 11px;margin:4px 3px 4px 0
 }
+
+.tablebox{overflow-x:auto}
 
 table{
- width:100%;
- border-collapse:collapse;
+ width:100%;border-collapse:collapse;
  min-width:650px
 }
 
 th,td{
- border-bottom:1px solid #444;
- padding:10px;
+ padding:10px;border-bottom:1px solid #444;
  text-align:left
-}
-
-.tablebox{
- overflow-x:auto
-}
-
-canvas{
- background:#111;
- border-radius:12px;
- width:100%;
- max-height:300px
 }
 
 @media(max-width:600px){
  .grid{grid-template-columns:1fr}
- .logo{width:100px;height:100px}
- .brand-title{font-size:27px}
- main{padding:15px}
- .card{padding:20px}
+ .logo{width:95px;height:95px}
+ .title{font-size:26px}
+ main{padding:12px}
+ .card{padding:18px}
 }
 </style>
 </head>
@@ -170,47 +112,105 @@ canvas{
 <body>
 
 <header>
- <div class="brand">
-  <img src="./logo.png" class="logo" alt="Logo Mister Emis">
-  <div>
-   <div class="brand-title">MISTER EMIS</div>
-   <div class="brand-sub">Controle de Fermentação • V4</div>
-  </div>
+<div class="brand">
+ <img src="./logo.png" class="logo" alt="Mister Emis">
+ <div>
+  <div class="title">MISTER EMIS</div>
+  <div class="subtitle">Controle de Fermentação • V5</div>
  </div>
+</div>
 </header>
 
 <main>
 
-<div class="card">
-<h3>🍺 Receitas / lotes</h3>
+<section class="card">
+<h2>🍺 Receitas / lotes</h2>
 
 <select id="lista" onchange="selecionar()">
 <option value="">Selecione...</option>
 </select>
 
 <div class="actions">
-<button class="btn" onclick="nova()">+ Nova</button>
-<button class="edit" onclick="editar()">Editar</button>
-<button class="delete" onclick="excluir()">Excluir</button>
+<button onclick="novo()">+ Nova</button>
+<button class="gray" onclick="editar()">Editar</button>
+<button class="red" onclick="excluir()">Excluir</button>
 </div>
-</div>
+</section>
 
+<section class="card">
+<h2>📝 Cadastro do lote</h2>
 
-<div class="card">
-<h3>Cadastro da receita</h3>
+<div class="grid">
 
-<input id="nome" placeholder="Nome do lote">
-<input id="estilo" placeholder="Estilo da cerveja">
-<input id="ferm" placeholder="Fermentador">
-<input id="vol" type="number" step="0.1" placeholder="Volume L">
-<input id="bi" type="number" step="0.1" placeholder="Brix inicial">
-
-<button class="btn" onclick="salvar()">Salvar receita</button>
+<div>
+<label>Nome do lote</label>
+<input id="nome" placeholder="Ex.: Pilsen 001">
 </div>
 
+<div>
+<label>Estilo</label>
+<input id="estilo" placeholder="Ex.: Pilsen">
+</div>
 
-<div class="card">
-<h3 id="titulo">Medição — nenhum lote</h3>
+<div>
+<label>Fermentador</label>
+<input id="fermentador" placeholder="Ex.: F01">
+</div>
+
+<div>
+<label>Volume (L)</label>
+<input id="volume" type="number" step="0.1">
+</div>
+
+<div>
+<label>Brix inicial</label>
+<input id="brixInicial" type="number" step="0.1">
+</div>
+
+<div>
+<label>Brix alvo</label>
+<input id="brixAlvo" type="number" step="0.1">
+</div>
+
+<div>
+<label>Temperatura inicial °C</label>
+<input id="tempInicial" type="number" step="0.1">
+</div>
+
+<div>
+<label>Pressão alvo (bar)</label>
+<input id="pressaoAlvo" type="number" step="0.1">
+</div>
+
+<div>
+<label>Temperatura de diacetil °C</label>
+<input id="tempDiacetil" type="number" step="0.1">
+</div>
+
+<div>
+<label>Temperatura de cold crash °C</label>
+<input id="tempCold" type="number" step="0.1">
+</div>
+
+</div>
+
+<label>Programa de fermentação</label>
+<textarea id="programa"
+placeholder="Ex.: Dias 1-2: 10°C; dias 3-4: 11°C; dias 5-6: 12°C"></textarea>
+
+<button onclick="salvarLote()">💾 Salvar lote</button>
+</section>
+
+<section class="card assistant">
+<h2>🧭 Assistente de fermentação</h2>
+<div id="assistente">
+<div class="stage">Nenhum lote selecionado</div>
+<p>Cadastre ou selecione um lote.</p>
+</div>
+</section>
+
+<section class="card">
+<h2 id="tituloMedicao">🌡️ Nova medição</h2>
 
 <div class="grid">
 
@@ -226,7 +226,7 @@ canvas{
 
 <div>
 <label>Temperatura °C</label>
-<input id="temp" type="number" step="0.1">
+<input id="temperatura" type="number" step="0.1">
 </div>
 
 <div>
@@ -236,28 +236,23 @@ canvas{
 
 </div>
 
-<textarea id="obs" placeholder="Observações"></textarea>
+<label>Observações</label>
+<textarea id="observacao"></textarea>
 
-<button class="btn" onclick="medir()">Registrar medição</button>
+<button onclick="registrarMedicao()">
+➕ Registrar medição
+</button>
+</section>
+
+<section class="card">
+<h2>📊 Resumo da fermentação</h2>
+<div id="resumo">
+Selecione um lote.
 </div>
+</section>
 
-
-<div class="card">
-<h3>📊 Resumo automático</h3>
-<div id="resumo" class="result">
-Selecione um lote e registre as medições.
-</div>
-</div>
-
-
-<div class="card">
-<h3>📈 Gráfico de Brix</h3>
-<canvas id="graf" width="800" height="300"></canvas>
-</div>
-
-
-<div class="card">
-<h3>📋 Histórico</h3>
+<section class="card">
+<h2>📋 Histórico</h2>
 
 <div class="tablebox">
 <table>
@@ -270,453 +265,429 @@ Selecione um lote e registre as medições.
 <th>Observação</th>
 </tr>
 </thead>
+
 <tbody id="historico"></tbody>
 </table>
 </div>
+</section>
 
-<br>
+<section class="card">
+<h2>💾 Backup</h2>
 
-<button class="edit" onclick="exportar()">Exportar CSV</button>
+<div class="actions">
+
+<button class="gray" onclick="exportarCSV()">
+Exportar CSV
+</button>
+
+<button class="gray" onclick="backup()">
+Backup JSON
+</button>
+
+<button onclick="document.getElementById('arquivo').click()">
+Restaurar
+</button>
 
 </div>
 
-</main>
+<input
+ id="arquivo"
+ type="file"
+ accept=".json"
+ style="display:none"
+ onchange="restaurar(this)"
+>
 
+<p class="small">
+Os lotes ficam armazenados neste aparelho.
+Faça backup regularmente.
+</p>
+
+</section>
+
+</main>
 
 <script>
 
-const STORAGE="MISTER_EMIS_V4";
+const CHAVE="MISTER_EMIS_V5";
 
-let db=JSON.parse(localStorage.getItem(STORAGE)) || {
- receitas:[],
- ativa:""
-};
+let banco=
+JSON.parse(localStorage.getItem(CHAVE)) ||
+{lotes:[],ativo:null};
+
+const $=id=>document.getElementById(id);
 
 function gravar(){
- localStorage.setItem(STORAGE,JSON.stringify(db));
+ localStorage.setItem(CHAVE,JSON.stringify(banco));
 }
 
-function atual(){
- return db.receitas.find(r=>r.id===db.ativa);
+function loteAtual(){
+ return banco.lotes.find(x=>x.id===banco.ativo);
 }
 
-function nova(){
- db.ativa="";
- document.getElementById("lista").value="";
- limparCadastro();
+function numero(id){
+ let v=parseFloat($(id).value);
+ return isNaN(v)?null:v;
+}
+
+function escapeHTML(v){
+ return String(v??"")
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;");
+}
+
+function novo(){
+
+ banco.ativo=null;
+
+ [
+ "nome","estilo","fermentador","volume",
+ "brixInicial","brixAlvo","tempInicial",
+ "pressaoAlvo","tempDiacetil","tempCold",
+ "programa"
+ ].forEach(id=>$(id).value="");
+
+ gravar();
  render();
 }
 
-function limparCadastro(){
- ["nome","estilo","ferm","vol","bi"].forEach(id=>{
-  document.getElementById(id).value="";
- });
-}
+function salvarLote(){
 
-function salvar(){
-
- let nome=document.getElementById("nome").value.trim();
- let bi=parseFloat(document.getElementById("bi").value);
+ let nome=$("nome").value.trim();
+ let inicial=numero("brixInicial");
 
  if(!nome){
   alert("Digite o nome do lote.");
   return;
  }
 
- if(isNaN(bi)){
+ if(inicial===null){
   alert("Digite o Brix inicial.");
   return;
  }
 
- let existente=atual();
+ let lote=loteAtual();
 
- if(existente){
+ if(!lote){
 
-  existente.nome=nome;
-  existente.estilo=document.getElementById("estilo").value;
-  existente.ferm=document.getElementById("ferm").value;
-  existente.vol=document.getElementById("vol").value;
-  existente.bi=bi;
-
- }else{
-
-  let receita={
-   id:Date.now().toString(),
-   nome:nome,
-   estilo:document.getElementById("estilo").value,
-   ferm:document.getElementById("ferm").value,
-   vol:document.getElementById("vol").value,
-   bi:bi,
-   med:[]
+  lote={
+   id:String(Date.now()),
+   inicio:new Date().toISOString().slice(0,10),
+   medicoes:[]
   };
 
-  db.receitas.push(receita);
-  db.ativa=receita.id;
+  banco.lotes.push(lote);
+  banco.ativo=lote.id;
  }
+
+ lote.nome=nome;
+ lote.estilo=$("estilo").value;
+ lote.fermentador=$("fermentador").value;
+ lote.volume=numero("volume");
+ lote.brixInicial=inicial;
+ lote.brixAlvo=numero("brixAlvo");
+ lote.tempInicial=numero("tempInicial");
+ lote.pressaoAlvo=numero("pressaoAlvo");
+ lote.tempDiacetil=numero("tempDiacetil");
+ lote.tempCold=numero("tempCold");
+ lote.programa=$("programa").value;
 
  gravar();
  render();
 
- alert("Receita salva!");
+ alert("Lote salvo!");
 }
 
 function selecionar(){
- db.ativa=document.getElementById("lista").value;
+
+ banco.ativo=$("lista").value || null;
+
  gravar();
  render();
 }
 
 function editar(){
 
- let r=atual();
+ let l=loteAtual();
 
- if(!r){
+ if(!l){
   alert("Selecione um lote.");
   return;
  }
 
- document.getElementById("nome").value=r.nome;
- document.getElementById("estilo").value=r.estilo || "";
- document.getElementById("ferm").value=r.ferm || "";
- document.getElementById("vol").value=r.vol || "";
- document.getElementById("bi").value=r.bi || "";
+ $("nome").value=l.nome??"";
+ $("estilo").value=l.estilo??"";
+ $("fermentador").value=l.fermentador??"";
+ $("volume").value=l.volume??"";
+ $("brixInicial").value=l.brixInicial??"";
+ $("brixAlvo").value=l.brixAlvo??"";
+ $("tempInicial").value=l.tempInicial??"";
+ $("pressaoAlvo").value=l.pressaoAlvo??"";
+ $("tempDiacetil").value=l.tempDiacetil??"";
+ $("tempCold").value=l.tempCold??"";
+ $("programa").value=l.programa??"";
+
+ window.scrollTo({
+  top:250,
+  behavior:"smooth"
+ });
 }
 
 function excluir(){
 
- let r=atual();
+ let l=loteAtual();
 
- if(!r){
-  alert("Selecione um lote.");
-  return;
- }
+ if(!l)return;
 
- if(confirm("Excluir o lote "+r.nome+"?")){
+ if(confirm("Excluir o lote "+l.nome+"?")){
 
-  db.receitas=db.receitas.filter(x=>x.id!==r.id);
-  db.ativa="";
+  banco.lotes=
+  banco.lotes.filter(x=>x.id!==l.id);
+
+  banco.ativo=null;
 
   gravar();
   render();
  }
 }
 
+function registrarMedicao(){
 
-/* Conversão Brix -> SG */
+ let l=loteAtual();
 
-function sgBrix(b){
- return 1+(b/(258.6-((b/258.2)*227.1)));
-}
-
-
-/* Correção aproximada do refratômetro
-   durante fermentação */
-
-function corrigida(obi,fb){
-
- let og=sgBrix(obi);
-
- return 1.001843
- -0.002318474*obi
- -0.000007775*obi*obi
- -0.000000034*obi*obi*obi
- +0.00574*fb
- +0.00003344*fb*fb
- +0.000000086*fb*fb*fb;
-}
-
-
-function calcular(r,m){
-
- let og=sgBrix(parseFloat(r.bi));
- let fg=corrigida(parseFloat(r.bi),parseFloat(m.brix));
-
- let atenuacao=((og-fg)/(og-1))*100;
- let abv=(og-fg)*131.25;
-
- return{
-  og:og,
-  fg:fg,
-  atenuacao:atenuacao,
-  abv:abv
- };
-}
-
-
-function medir(){
-
- let r=atual();
-
- if(!r){
-  alert("Selecione um lote primeiro.");
-  return;
- }
-
- let b=parseFloat(document.getElementById("brix").value);
-
- if(isNaN(b)){
-  alert("Digite o Brix atual.");
-  return;
- }
-
- let m={
-  data:document.getElementById("data").value,
-  brix:b,
-  temp:document.getElementById("temp").value,
-  pressao:document.getElementById("pressao").value,
-  obs:document.getElementById("obs").value
- };
-
- r.med.push(m);
-
- gravar();
-
- document.getElementById("brix").value="";
- document.getElementById("temp").value="";
- document.getElementById("pressao").value="";
- document.getElementById("obs").value="";
-
- render();
-}
-
-
-function statusFermentacao(r){
-
- if(!r.med || r.med.length===0){
-  return "Aguardando primeira medição.";
- }
-
- let ultima=r.med[r.med.length-1];
-
- let texto="";
-
- if(r.med.length>=3){
-
-  let a=r.med[r.med.length-1].brix;
-  let b=r.med[r.med.length-2].brix;
-  let c=r.med[r.med.length-3].brix;
-
-  if(Math.abs(a-b)<=0.2 && Math.abs(b-c)<=0.2){
-   texto="Brix praticamente estável nas últimas medições.";
-  }else{
-   texto="Fermentação em andamento — Brix continua variando.";
-  }
-
- }else{
-  texto="Continue registrando medições para avaliar a tendência.";
- }
-
- let calc=calcular(r,ultima);
-
- return `
- Brix inicial: <b>${r.bi}</b><br>
- Brix atual: <b>${ultima.brix}</b><br>
- SG inicial estimada: <b>${calc.og.toFixed(3)}</b><br>
- FG corrigida estimada: <b>${calc.fg.toFixed(3)}</b><br>
- Atenuação aparente estimada: <b>${calc.atenuacao.toFixed(1)}%</b><br>
- Álcool estimado: <b>${calc.abv.toFixed(1)}%</b><br><br>
- <span class="warn">${texto}</span><br><br>
- <small>
- O refratômetro precisa de correção após o início da fermentação.
- Confirme a densidade final com densímetro quando possível.
- </small>
- `;
-}
-
-
-function grafico(r){
-
- let cv=document.getElementById("graf");
- let ctx=cv.getContext("2d");
-
- ctx.clearRect(0,0,cv.width,cv.height);
-
- ctx.fillStyle="#111";
- ctx.fillRect(0,0,cv.width,cv.height);
-
- if(!r || !r.med || r.med.length===0){
-  return;
- }
-
- let dados=r.med.map(m=>parseFloat(m.brix));
-
- let max=Math.max(parseFloat(r.bi),...dados)+1;
- let min=Math.min(...dados)-1;
-
- let margem=45;
-
- let largura=cv.width-margem*2;
- let altura=cv.height-margem*2;
-
- ctx.strokeStyle="#555";
- ctx.lineWidth=1;
-
- ctx.beginPath();
- ctx.moveTo(margem,margem);
- ctx.lineTo(margem,cv.height-margem);
- ctx.lineTo(cv.width-margem,cv.height-margem);
- ctx.stroke();
-
- ctx.strokeStyle="#f0b323";
- ctx.lineWidth=4;
- ctx.beginPath();
-
- dados.forEach((v,i)=>{
-
-  let x=margem;
-
-  if(dados.length>1){
-   x=margem+(i*(largura/(dados.length-1)));
-  }
-
-  let y=margem+((max-v)/(max-min))*altura;
-
-  if(i===0){
-   ctx.moveTo(x,y);
-  }else{
-   ctx.lineTo(x,y);
-  }
- });
-
- ctx.stroke();
-
- ctx.fillStyle="#f0b323";
-
- dados.forEach((v,i)=>{
-
-  let x=margem;
-
-  if(dados.length>1){
-   x=margem+(i*(largura/(dados.length-1)));
-  }
-
-  let y=margem+((max-v)/(max-min))*altura;
-
-  ctx.beginPath();
-  ctx.arc(x,y,6,0,Math.PI*2);
-  ctx.fill();
- });
-}
-
-
-function render(){
-
- let lista=document.getElementById("lista");
-
- lista.innerHTML='<option value="">Selecione...</option>';
-
- db.receitas.forEach(r=>{
-
-  let o=document.createElement("option");
-
-  o.value=r.id;
-  o.textContent=r.nome;
-
-  lista.appendChild(o);
- });
-
- lista.value=db.ativa || "";
-
- let r=atual();
-
- document.getElementById("titulo").textContent=
- r ? "Medição — "+r.nome : "Medição — nenhum lote";
-
- if(!r){
-
-  document.getElementById("historico").innerHTML="";
-  document.getElementById("resumo").innerHTML=
-  "Selecione um lote e registre as medições.";
-
-  grafico(null);
-  return;
- }
-
- document.getElementById("resumo").innerHTML=statusFermentacao(r);
-
- let html="";
-
- (r.med || []).slice().reverse().forEach(m=>{
-
-  html+=`
-  <tr>
-   <td>${m.data || "-"}</td>
-   <td>${m.brix}</td>
-   <td>${m.temp || "-"}</td>
-   <td>${m.pressao || "-"}</td>
-   <td>${m.obs || "-"}</td>
-  </tr>
-  `;
- });
-
- document.getElementById("historico").innerHTML=html;
-
- grafico(r);
-}
-
-
-function exportar(){
-
- let r=atual();
-
- if(!r){
+ if(!l){
   alert("Selecione um lote.");
   return;
  }
 
- let linhas=[
-  ["Data","Brix","Temperatura","Pressao","Observacao"]
- ];
+ let b=numero("brix");
 
- (r.med || []).forEach(m=>{
-  linhas.push([
-   m.data,
-   m.brix,
-   m.temp,
-   m.pressao,
-   m.obs
-  ]);
+ if(b===null){
+  alert("Digite o Brix atual.");
+  return;
+ }
+
+ l.medicoes.push({
+
+  data:$("data").value ||
+  new Date().toISOString().slice(0,10),
+
+  brix:b,
+  temperatura:numero("temperatura"),
+  pressao:numero("pressao"),
+  observacao:$("observacao").value
+
  });
 
- let csv=linhas.map(l=>
-  l.map(v=>`"${String(v ?? "").replace(/"/g,'""')}"`).join(";")
- ).join("\n");
+ gravar();
 
- let blob=new Blob([csv],{
-  type:"text/csv;charset=utf-8"
- });
+ $("brix").value="";
+ $("temperatura").value="";
+ $("pressao").value="";
+ $("observacao").value="";
 
- let url=URL.createObjectURL(blob);
-
- let a=document.createElement("a");
-
- a.href=url;
- a.download=r.nome.replace(/\s+/g,"_")+"_fermentacao.csv";
-
- a.click();
-
- URL.revokeObjectURL(url);
+ render();
 }
 
+function tendencia(l){
 
-document.getElementById("data").value=
- new Date().toISOString().slice(0,10);
+ let m=l.medicoes;
 
-render();
+ if(m.length<2)
+ return "Aguardando mais medições";
 
+ let atual=m[m.length-1].brix;
+ let anterior=m[m.length-2].brix;
 
-if("serviceWorker" in navigator){
+ let diferenca=atual-anterior;
 
- window.addEventListener("load",()=>{
+ if(diferenca < -0.2)
+ return "↓ Brix caindo";
 
-  navigator.serviceWorker
-   .register("./sw.js")
-   .catch(console.error);
+ if(diferenca > 0.2)
+ return "↑ Brix subindo";
 
- });
+ return "→ Brix praticamente estável";
 }
 
-</script>
+function brixEstavel(l){
 
-</body>
-</html>
+ let m=l.medicoes;
+
+ if(m.length<3)
+ return false;
+
+ let a=m[m.length-1].brix;
+ let b=m[m.length-2].brix;
+ let c=m[m.length-3].brix;
+
+ return(
+  Math.abs(a-b)<=0.2 &&
+  Math.abs(b-c)<=0.2
+ );
+}
+
+function diasFermentando(l){
+
+ let inicio=new Date(l.inicio+"T12:00:00");
+ let hoje=new Date();
+
+ return Math.max(
+  1,
+  Math.floor((hoje-inicio)/86400000)+1
+ );
+}
+
+function sgBrix(brix){
+
+ return 1+
+ brix/
+ (258.6-((brix/258.2)*227.1));
+}
+
+function fgCorrigida(original,final){
+
+ return(
+  1.001843
+  -0.002318474*original
+  -0.000007775*original*original
+  -0.000000034*original*original*original
+  +0.00574*final
+  +0.00003344*final*final
+  +0.000000086*final*final*final
+ );
+}
+
+function calcular(l,m){
+
+ let og=sgBrix(l.brixInicial);
+
+ let fg=
+ fgCorrigida(
+  l.brixInicial,
+  m.brix
+ );
+
+ let abv=(og-fg)*131.25;
+
+ let atenuacao=
+ ((og-fg)/(og-1))*100;
+
+ return{
+  og:og,
+  fg:fg,
+  abv:abv,
+  atenuacao:atenuacao
+ };
+}
+
+function montarAssistente(l){
+
+ if(!l){
+
+  return `
+  <div class="stage">
+  Nenhum lote selecionado
+  </div>
+  <p>Cadastre ou selecione um lote.</p>
+  `;
+ }
+
+ let m=l.medicoes;
+
+ if(!m.length){
+
+  return `
+  <div class="stage">
+  AGUARDANDO PRIMEIRA MEDIÇÃO
+  </div>
+
+  <p>
+  Dia aproximado:
+  <b>${diasFermentando(l)}</b>
+  </p>
+
+  <p>
+  Registre Brix, temperatura e pressão
+  para iniciar o acompanhamento.
+  </p>
+
+  <p>
+  <b>Programa cadastrado:</b><br>
+  ${escapeHTML(l.programa || "Não informado")}
+  </p>
+  `;
+ }
+
+ let ultima=m[m.length-1];
+
+ let estavel=brixEstavel(l);
+
+ let etapa=
+ estavel
+ ? "BRIX ESTÁVEL"
+ : "FERMENTAÇÃO EM ACOMPANHAMENTO";
+
+ let aviso=
+ estavel
+ ? `
+ As três últimas leituras estão próximas.
+ Confirme a densidade final e os critérios
+ da sua receita antes de encerrar a fermentação
+ ou iniciar a próxima etapa.
+ `
+ : `
+ Continue acompanhando a tendência.
+ Temperatura, pressão, descanso de diacetil
+ e cold crash devem seguir os parâmetros
+ definidos para este lote.
+ `;
+
+ return `
+
+ <div class="stage">
+ ${etapa}
+ </div>
+
+ <div class="metric">
+
+ <span class="badge">
+ Dia ${diasFermentando(l)}
+ </span>
+
+ <span class="badge">
+ ${tendencia(l)}
+ </span>
+
+ <br><br>
+
+ Brix atual:
+ <b>${ultima.brix}</b><br>
+
+ Temperatura atual:
+ <b>${ultima.temperatura ?? "-"} °C</b><br>
+
+ Pressão atual:
+ <b>${ultima.pressao ?? "-"} bar</b><br>
+
+ Brix alvo:
+ <b>${l.brixAlvo ?? "-"}</b><br>
+
+ Pressão alvo:
+ <b>${l.pressaoAlvo ?? "-"} bar</b>
+
+ <br><br>
+
+ <b class="gold">
+ Acompanhamento:
+ </b>
+
+ <br>
+
+ ${aviso}
+
+ <br>
+
+ <b>Programa cadastrado:</b><br>
+ ${escapeHTML(l.programa || "
