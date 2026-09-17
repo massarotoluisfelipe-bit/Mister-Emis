@@ -1,4 +1,4 @@
-const CACHE = 'mister-emis-v6';
+const CACHE = 'mister-emis-v7';
 
 const FILES = [
   './',
